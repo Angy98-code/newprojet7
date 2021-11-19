@@ -1,0 +1,402 @@
+body {
+  padding: 50px 90px 50px 90px;
+}
+
+.divlogo {
+  display: flex;
+  justify-content: center;
+  height: 140px;
+  font-weight: 600;
+}
+#logo {
+  width: 280px;
+  height: 120px;
+  padding-top: 30px;
+}
+
+#containerinput {
+  position: relative;
+}
+
+#inputsearch {
+  border: none;
+  background-color: rgb(236, 235, 235);
+  cursor: pointer;
+  border-radius: 5px;
+  height: 60px;
+}
+
+i.fa.fa-search {
+  font-size: 24px;
+  position: absolute;
+  right: -1px;
+  top: 0px;
+  cursor: pointer;
+}
+
+::placeholder {
+  color: rgb(185, 183, 183);
+  font-weight: 500;
+  font-size: 15px;
+  text-overflow: ellipsis;
+}
+
+.divicon {
+  z-index: 1;
+  background-color: rgb(236, 235, 235);
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  margin-left: 10px;
+}
+
+/* SECTION */
+
+nav.navbar.navbar-expand {
+  padding: 0;
+}
+
+.containersection {
+  margin: 20px 0 20px 0;
+}
+
+.fas.fa-chevron-down {
+  width: 5px;
+  padding-right: 20px;
+}
+
+.btn.btn-primary,
+.btn.btn-success,
+.btn.btn-danger {
+  margin-right: 20px;
+  border-radius: 5px;
+  font-weight: 450;
+  font-size: 18px;
+  width: 160px;
+  height: 65px;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.btn.btn-primary {
+  background-color: #3282f7;
+}
+
+.btn.btn-success {
+  background-color: #68d9a4;
+}
+
+.btn.btn-danger {
+  background-color: #ed6454;
+}
+
+/* choix des ingrédients, ustensiles ...  doit apparaitre au moment des choix sinon 
+display none */
+/*div principale*/
+
+.navbarresultchooses {
+  display: flex;
+  margin-bottom: 20px;
+  /*mettre en display none, changement dynamiquement avec js*/
+  /* display : none; */
+}
+
+.far.fa-times-circle {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.navbarresultchoosesingredients,
+.navbarresultchoosesappareil,
+.navbarresultchoosesustensiles {
+  justify-content: space-between;
+  display: flex;
+  color: white;
+  width: 110px;
+  height: 38px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.navbarresultchoosesingredients {
+  background-color: #3282f7;
+  margin-right: 20px;
+}
+
+.navbarresultchoosesappareil {
+  background-color: #68d9a4;
+  margin-right: 20px;
+}
+
+.navbarresultchoosesustensiles {
+  background-color: #ed6454;
+}
+
+/* DROPDOWN */
+
+.choosesclose {
+  display: flex;
+}
+
+.navopeningredients,
+.navopenappareil,
+.navopenustensiles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.fas.fa-chevron-up {
+  width: 5px;
+  padding-right: 20px;
+  color: white;
+}
+
+.ingredientsopen,
+.appareilopen,
+.ustensilesopen {
+  list-style-type: none;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  height: 1115px;
+}
+
+.ingredientsopen {
+  background-color: #3282f7;
+}
+
+.appareilopen {
+  background-color: #68d9a4;
+}
+
+.ustensilesopen {
+  background-color: #ed6454;
+}
+
+.inputingredients {
+  background-color: #3282f7;
+  border: none;
+  width: 400px;
+  color: white;
+}
+.inputappareil {
+  background-color: #68d9a4;
+  border: none;
+  width: 400px;
+}
+
+.inputustensiles {
+  background-color: #ed6454;
+  border: none;
+  width: 400px;
+}
+
+.labelingredients,
+.labelappareil,
+.labelustensiles {
+  font-size: 20px;
+  width: 300px;
+  opacity: 0.5;
+}
+
+.ingredientslist,
+.appareillist,
+.ustensileslist {
+  text-decoration: none;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  /* height: 400px;
+  width: 650px;*/
+}
+
+ul.ingredientslist {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 96%;
+  column-gap: 29px;
+  padding-left: 6px;
+  list-style-type: none;
+}
+
+.ingredients-item,
+.appareil-item,
+.ustensiles-item {
+  padding-bottom: 10px;
+}
+
+.inputingredients::placeholder,
+.inputappareil::placeholder,
+.inputustensiles::placeholder {
+  font-size: 20px;
+}
+
+/*----- in the card*/
+.cardcontainertitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.far.fa-clock {
+  padding-top: 4px;
+  font-size: 18px;
+  white-space: nowrap;
+  padding-top: 8px;
+}
+
+.cardcontainertitle h5 {
+  font-size: 18px;
+  padding-top: 7px;
+}
+
+i span {
+  font-weight: bold;
+}
+
+/* tag */
+.navbarresultchoosesingredients,
+.navbarresultchoosesappareil,
+.navbarresultchoosesustensiles {
+  padding: 8px 35px 8px 8px;
+  font-size: 14px;
+  width: auto;
+  position: relative;
+}
+
+#boutonfermeturetag {
+  position: absolute;
+  padding: 6px;
+  right: 0;
+}
+
+.placeringredientschoisis,
+.placerappareilchoisis,
+.placerustensileschoisis {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 5px;
+}
+
+.tagsingredientrow,
+.tagsappareilrow,
+.tagsustensilesrow {
+  margin: 0;
+}
+/*
+.tagsingredientrow {
+  display: flex;
+  row-gap: 5px;
+  flex-direction: row;
+}*/
+
+/*
+p.card-text {
+  font-size: 12px;
+  text-overflow: "[...]";
+  height: 90px;
+  /*width: 171px;
+  height: 109px;
+  top: 240px;
+  left: 191px;*/
+
+/* MENU */
+
+menu {
+  padding: 0;
+}
+
+.allmenucards {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+  column-gap: 32px;
+}
+
+menu .container {
+  padding-top: 10px;
+}
+
+div.card-body {
+  display: inline-block;
+  background-color: rgb(226, 226, 226);
+  width: 100%;
+  height: 345px;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+}
+
+div.card-img-top {
+  background-color: #c7bebe;
+  border-radius: 5px 5px 0 0;
+  height: 165px;
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  div.card-body {
+    height: 360px;
+    max-width: 31%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/*carte ingredient*/
+
+.cardtextgauche {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  padding-top: 10px;
+  height: 150px;
+  width: 180px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.cardtextdroit {
+  width: 200px;
+  height: 94px;
+  display: inline;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6; /* number of lines to show */
+  line-height: 1.2; /* fallback */
+  max-height: X * 6;
+  overflow: hidden;
+}
+
+.cardcontainertextpart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chaqueingredient {
+  display: flex;
+}
+
+.baliseLiDansIngredients {
+  cursor: pointer;
+}
+
+.baliseLiDansIngredients:hover {
+  font-weight: 600;
+}
