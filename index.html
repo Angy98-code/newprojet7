@@ -48,11 +48,27 @@
 
                 <!--les div apparaissant après avoir fait son choix (en haut), -->
                 <div class="navbarresultchooses">
-                    <div class="navbarresultchoosesingredients">text<i class="far fa-times-circle"></i>
+                    <div class="placeringredientschoisis">
+                        <!--<div class="tagsingredientrow">
+                            <span class="navbarresultchoosesingredients">
+                            ${ingredient}
+                            <i class="far fa-times-circle" id="boutonfermeturetag"></i>
+                            </span>
+                          </div>-->
                     </div>
-                    <div class="navbarresultchoosesappareil">text<i class="far fa-times-circle"></i>
+                    <div class="placerappareilchoisis">
+                        <!--<div class="tagsappareilrow">
+                            <span class="navbarresultchoosesappareil">${ingredient}
+                                <i class="far fa-times-circle" id="boutonfermeturetag"></i>
+                            </span>
+                        </div>-->
                     </div>
-                    <div class="navbarresultchoosesustensiles">text<i class="far fa-times-circle"></i>
+                    <div class="placerustensileschoisis">
+                        <!--<div class="tagsustensilesrow">
+                            <span class="navbarresultchoosesustensiles">${ingredient}
+                                <i class="far fa-times-circle" id="boutonfermeturetag"></i>
+                            </span>
+                        </div>-->
                     </div>
                 </div>
 
@@ -75,7 +91,7 @@
                         </div>
 
                         <!--ingredients open-->
-                        <div class="ingredientsopen">
+                        <div class="ingredientsopen" style="display:none">
 
                             <div class="navopeningredients">
                                 <input class="inputingredients" name="inputingredients"
@@ -84,6 +100,7 @@
                             </div>
 
                             <ul class="ingredientslist">
+                                <!--dedans il y aura des span-->
                             </ul>
                         </div>
 
@@ -227,7 +244,6 @@
     <script type="text/javascript" src="js/recipes.js"></script>
     <script type="text/javascript" src="js/cards.js"></script>
     <script type="text/javascript" src="js/searchIngredients.js"></script>
-    <script type="text/javascript" src="js/searchAppareil.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script src="https://kit.fontawesome.com/941542f664.js" crossorigin="anonymous"></script>
 
