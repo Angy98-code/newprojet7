@@ -169,11 +169,12 @@ display none */
   padding: 20px;
   font-size: 18px;
   border-radius: 5px;
-  height: 1115px;
+  height: 1137px;
 }
 
 .ingredientsopen {
   background-color: #3282f7;
+  display: none;
 }
 
 .appareilopen {

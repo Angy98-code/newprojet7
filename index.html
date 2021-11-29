@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/style.css" />
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
         type='text/css'>
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -81,8 +82,8 @@
                         <div class="ingredientsclose">
 
                             <div class="chooseingredients">
-                                <button type="button" class="btn btn-primary " data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Ingredients
+                                <button type="button" onclick="openIngredientsModal(event)" class="btn btn-primary "
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingredients
                                     <div class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                     </div>
@@ -91,7 +92,7 @@
                         </div>
 
                         <!--ingredients open-->
-                        <div class="ingredientsopen" style="display:none">
+                        <div class="ingredientsopen">
 
                             <div class="navopeningredients">
                                 <input class="inputingredients" name="inputingredients"
