@@ -13,16 +13,12 @@ let arrayDesIngredientsSelectionnes = []; // variable globale de tous les ingré
 // - insère la recherche par ingrédient//
 // - point d'entrée (appelée dans main.js)
 //A0-A2
+
 function placeIngredients() {
   //debugger;
   // liste des ingrédients dans le panneau de recherche
   const allIngredients = laListeDesIngredients();
-  const parentNode = document.querySelector(".ingredientslist");
-  let listeHtml = "";
-  allIngredients.forEach((ingredient) => {
-    listeHtml += `<li class="baliseLiDansIngredients">${ingredient}</li>`;
-  });
-  parentNode.innerHTML = listeHtml;
+  drawIngredients(allIngredients);
   // liste des tags ingredients selectionnés
   addIngredientsClickListener();
 }
@@ -31,10 +27,20 @@ function placeIngredients() {
 // 2- migrer ligne 20 à 25 dans la fonction drawIngredients
 // 3- dans placeIngredients() appeler drawIngredients() avec pour paramètre allIngredients
 // 4- vérifier que la liste des ingrédients s'affiche comme avant
+//
+// début bout utilisé partie 5
+// affichage des ingrédient soit au départ soit après le tri (3lettres)
+function drawIngredients(ingredients) {
+  // paramètre array de string
+  const parentNode = document.querySelector(".ingredientslist");
+  let listeHtml = "";
+  ingredients.forEach((ingredient) => {
+    listeHtml += `<li class="baliseLiDansIngredients">${ingredient}</li>`;
+  });
+  parentNode.innerHTML = listeHtml;
+}
 
-// suite partie 4
-
-// fin suite partie 4
+// fin bout utilisé partie 5
 //----------function traitement données
 // laListeDesIngredients retourne un array de strings contenant tous les ingrédients
 //A1
@@ -88,15 +94,7 @@ function selectIngredient(ingredient) {
     arrayDesIngredientsSelectionnes
   );
   arrayDesIngredientsSelectionnes.push(ingredient);
-  ////////////////////////////////////////////////:WIP
-  //fonctionnementModalDesIngredients()
 
-  // const modalIngredient = document.querySelector(".ingredientsopen");
-  // modalIngredient.style.display = "none";
-  // const buttonIngredient = document.querySelector(".chooseingredients");
-  // buttonIngredient.style.display = "block";
-  // //
-  ///////////////////////////////////////////////////////
   console.log(
     "arrayDesIngredientsSelectionnes après push : ",
     arrayDesIngredientsSelectionnes
@@ -195,14 +193,6 @@ const removeIngredientsClickListener = (e) => {
   drawSelectedIngredientsTags();
 };
 
-//why don't use
-// bouton fermeture croix x
-// const btnClose = document.querySelector("#closebtn");
-// const modalbg = document.querySelector(".bground");
-// btnClose.addEventListener("click", function (event) {
-//   modalbg.style.display = "none";
-// });
-
 //***** 4ème partie fermeture ouverture de la liste des ingrédients
 // closeIngredientsModal() appelé dans addIngredientsClickListener()
 // html ligne 85 : onclick="openIngredientsModal(event)" sur button des ingrédients
@@ -228,18 +218,37 @@ function openIngredientsModal() {
 function handleIngredientsSearch() {
   const ingredientsInputSearchInModal =
     document.querySelector(".inputingredients");
-  //la liste dans laquel la recherche doit se faire
 
   ingredientsInputSearchInModal.addEventListener("input", (e) => {
     e.preventDefault();
-    const recuperationSearchInputIngredient = e.target.value;
-    console.log(recuperationSearchInputIngredient);
+    const inputIngredients = e.target.value;
+    let filteredIngredients = [];
+    // const searchInputIngredients = inputIngredients.toLowerCase();
+    // console.log(searchInputIngredients);
 
-    if (recuperationSearchInputIngredient.length > 2) {
-      const troisLettersIngredients =
-        recuperationSearchInputIngredient.length > 2;
+    if (inputIngredients.length > 2) {
+      const allIngredients = laListeDesIngredients();
+      // todo :
+      // 1- créer une variable filteredIngredients
 
-      console.log(troisLettersIngredients);
+      // 2- utiliser filter() sur allIngredients pour garder les ingrédients contenant la string inputIngredients (recup...)
+      // console.log(allIngredients)
+      filteredIngredients = allIngredients.filter((ingredient) => {
+        return ingredient
+          .toLowerCase()
+          .includes(inputIngredients.toLowerCase());
+        // const ingredientLowerCase = ingredient.toLowerCase();
+        // const inputIngredientsLowerCase = inputIngredients.toLowerCase();
+        // return ingredientLowerCase.includes(inputIngredientsLowerCase);
+      });
+      console.log(filteredIngredients);
+
+      // 3- passer filteredIngredients en paramètre à drawIngredients
+
+      drawIngredients(filteredIngredients);
+    } else {
+      const allIngredients = laListeDesIngredients();
+      drawIngredients(allIngredients);
     }
   });
   // à partir de la 3ème lettre vérifier les similitudes avec les autres éléments
