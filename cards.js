@@ -34,21 +34,15 @@ function oneCardHtml(recipe) {
 //console.log(ingredients[0]);
 // insert the cards in the DOM (.allmenucards)
 //placeCards fonction principale
-function placeCards(recipesToDraw) {
+function placeCards() {
   const parentNode = document.querySelector(".allmenucards");
-	parentNode.innerHTML = '';
-  recipesToDraw.forEach((recipe) => {
+  // parentNode.innerHTML = oneCardHtml(recipes[0]);
+  recipes.forEach((recipe) => {
     //  console.log(recipe);
     //mettre chaque menu dans une card
     parentNode.innerHTML += oneCardHtml(recipe);
   });
 }
-
-// todo
-// *1- ajouter un paramètre recipesToDraw à placeCards() et renommer placeCards en drawRecipes
-// *2- modifier l'appel de placeCards en conséquence
-// 3- appeler placeCards avec un array de recettes filtrées en fonction des ingrédients sélectionnés à chque ajout/suppression d'ingrédients
-//
 
 //leftSideCard liste des ingrédients avec quantity et unit
 function leftSideCard(ingredients) {

@@ -3,5 +3,5 @@
 //console.log("main.js", recipes);
 //console.log("oneCardHtml", oneCardHtml(recipes[0]));
 
-placeCards();
+placeCards(recipes);
 placeIngredients();

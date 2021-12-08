@@ -43,6 +43,7 @@ function drawIngredients(ingredients) {
 // fin bout utilisé partie 5
 //----------function traitement données
 // laListeDesIngredients retourne un array de strings contenant tous les ingrédients
+// dédupliqués et triés
 //A1
 function laListeDesIngredients() {
   //debugger;
@@ -118,6 +119,9 @@ function addIngredientsClickListener() {
     selectIngredient(recuperationIngredient);
     drawSelectedIngredientsTags();
     closeIngredientsModal();
+	// filter recipes by ingredients
+  const recipiesFilteredByIngredients = filterRecipesByIngredients();
+	placeCards(recipiesFilteredByIngredients);
     console.log(
       "recuperationIngredient après appel selectIngredient : ",
       recuperationIngredient
@@ -181,6 +185,18 @@ function drawSelectedIngredientsTags() {
 //   drawSelectedIngredientsTags();
 // };
 
+// filter recipes by ingredients
+function filterRecipesByIngredients() {
+	if (arrayDesIngredientsSelectionnes.length == 0) {
+    return recipes
+  }
+  return recipes.filter((recipe) => {
+    return recipe.ingredients.some((ingredient) => {
+      return arrayDesIngredientsSelectionnes.includes(ingredient.ingredient);
+    });
+  });
+}
+
 //c0
 const removeIngredientsClickListener = (e) => {
   // get clicked ingredient name
@@ -191,6 +207,9 @@ const removeIngredientsClickListener = (e) => {
     arrayDesIngredientsSelectionnes.splice(idx, 1);
   }
   drawSelectedIngredientsTags();
+  // filter recipes by ingredients
+  const recipiesFilteredByIngredients = filterRecipesByIngredients()
+  placeCards(recipiesFilteredByIngredients);
 };
 
 //***** 4ème partie fermeture ouverture de la liste des ingrédients
