@@ -21,6 +21,8 @@ function placeIngredients() {
   drawIngredients(allIngredients);
   // liste des tags ingredients selectionnés
   addIngredientsClickListener();
+  fermetureModalParChevronUp();
+  handleIngredientsSearch();
 }
 // todo :
 // 1- déclarer une fonction drawIngredients avec un paramètre ingredients (array de strings)
@@ -109,8 +111,10 @@ function selectIngredient(ingredient) {
 function addIngredientsClickListener() {
   ///////debugger;
   const ulIngredients = document.querySelector(".ingredientslist");
+
   ulIngredients.addEventListener("click", (e) => {
     //debugger;
+
     const recuperationIngredient = e.target.textContent;
     console.log(
       "recuperationIngredient avant appel fonction selectIngredient : ",
@@ -119,9 +123,10 @@ function addIngredientsClickListener() {
     selectIngredient(recuperationIngredient);
     drawSelectedIngredientsTags();
     closeIngredientsModal();
-	// filter recipes by ingredients
-  const recipiesFilteredByIngredients = filterRecipesByIngredients();
-	placeCards(recipiesFilteredByIngredients);
+    //debugger;
+    // filter recipes by ingredients
+    const recipiesFilteredByIngredients = filterRecipesByIngredients();
+    placeCards(recipiesFilteredByIngredients);
     console.log(
       "recuperationIngredient après appel selectIngredient : ",
       recuperationIngredient
@@ -165,6 +170,7 @@ function drawSelectedIngredientsTags() {
   // add click handler in i tag
   //pas exécuté dans B
   //debugger;
+  //handleIngredientsSearch();
   const iTags = parentNode.querySelectorAll("i");
   iTags.forEach((iTag) => {
     iTag.addEventListener("click", removeIngredientsClickListener);
@@ -184,11 +190,11 @@ function drawSelectedIngredientsTags() {
 //   arrayDesIngredientsSelectionnes.remove(recuperationTagASupprimer);
 //   drawSelectedIngredientsTags();
 // };
-
+//////////////////////////////////////////////////////////////////////////
 // filter recipes by ingredients
 function filterRecipesByIngredients() {
-	if (arrayDesIngredientsSelectionnes.length == 0) {
-    return recipes
+  if (arrayDesIngredientsSelectionnes.length == 0) {
+    return recipes;
   }
   return recipes.filter((recipe) => {
     return recipe.ingredients.some((ingredient) => {
@@ -208,7 +214,7 @@ const removeIngredientsClickListener = (e) => {
   }
   drawSelectedIngredientsTags();
   // filter recipes by ingredients
-  const recipiesFilteredByIngredients = filterRecipesByIngredients()
+  const recipiesFilteredByIngredients = filterRecipesByIngredients();
   placeCards(recipiesFilteredByIngredients);
 };
 
@@ -228,6 +234,14 @@ function openIngredientsModal() {
   const buttonIngredient = document.querySelector(".chooseingredients");
   modalIngredient.style.display = "block";
   buttonIngredient.style.display = "none";
+  const ingredientsInputSearchInModal =
+    document.querySelector(".inputingredients");
+  // debugger;
+  ingredientsInputSearchInModal.value = "";
+  // draw ingredients list
+  const allIngredients = laListeDesIngredients();
+  // TODO : remove selected ingredients before draw
+  drawIngredients(allIngredients);
 }
 
 //***** 5ème partie input dans la modal ingrédients qui affiche un choix d'ingrédients après 3 lettres
@@ -237,15 +251,15 @@ function openIngredientsModal() {
 function handleIngredientsSearch() {
   const ingredientsInputSearchInModal =
     document.querySelector(".inputingredients");
-
   ingredientsInputSearchInModal.addEventListener("input", (e) => {
+    //debugger;
     e.preventDefault();
     const inputIngredients = e.target.value;
     let filteredIngredients = [];
     // const searchInputIngredients = inputIngredients.toLowerCase();
     // console.log(searchInputIngredients);
 
-    if (inputIngredients.length > 2) {
+    if (inputIngredients.length >= 1) {
       const allIngredients = laListeDesIngredients();
       // todo :
       // 1- créer une variable filteredIngredients
@@ -261,7 +275,6 @@ function handleIngredientsSearch() {
         // return ingredientLowerCase.includes(inputIngredientsLowerCase);
       });
       console.log(filteredIngredients);
-
       // 3- passer filteredIngredients en paramètre à drawIngredients
 
       drawIngredients(filteredIngredients);
@@ -270,7 +283,12 @@ function handleIngredientsSearch() {
       drawIngredients(allIngredients);
     }
   });
-  // à partir de la 3ème lettre vérifier les similitudes avec les autres éléments
-  //afficher seulement les ingrédients avec ces 3 lettres dans le bon ordre
 }
-handleIngredientsSearch();
+
+//
+// fermeture en cliquant sur le chevron up dans modal ingrédient
+//
+function fermetureModalParChevronUp() {
+  const chevronUp = document.querySelector(".fas.fa-chevron-up");
+  chevronUp.addEventListener("click", closeIngredientsModal);
+}
