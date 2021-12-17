@@ -23,6 +23,7 @@ function placeIngredients() {
   addIngredientsClickListener();
   fermetureModalParChevronUp();
   handleIngredientsSearch();
+  handleGlobalSearch();
 }
 // todo :
 // 1- déclarer une fonction drawIngredients avec un paramètre ingredients (array de strings)
@@ -193,13 +194,24 @@ function drawSelectedIngredientsTags() {
 //////////////////////////////////////////////////////////////////////////
 // filter recipes by ingredients
 function filterRecipesByIngredients() {
+  // si aucun ingrédient séclectionné
   if (arrayDesIngredientsSelectionnes.length == 0) {
     return recipes;
   }
+  // si des ingrédients sont sélectionnés
   return recipes.filter((recipe) => {
-    return recipe.ingredients.some((ingredient) => {
-      return arrayDesIngredientsSelectionnes.includes(ingredient.ingredient);
+    // on récupère un array de string des ingrédients de la recette
+    const ingredientsRecette = recipe.ingredients.map(
+      (ingredient) => ingredient.ingredient
+    );
+    let tousIngredientsPresents = true;
+    // si un ingrédient n'est pas présent, on sait que tous les ingrédients ne sont pas présents
+    arrayDesIngredientsSelectionnes.forEach((ingredientSelectionne) => {
+      if (!ingredientsRecette.includes(ingredientSelectionne)) {
+        tousIngredientsPresents = false;
+      }
     });
+    return tousIngredientsPresents;
   });
 }
 
@@ -238,10 +250,12 @@ function openIngredientsModal() {
     document.querySelector(".inputingredients");
   // debugger;
   ingredientsInputSearchInModal.value = "";
-  // draw ingredients list
+  // draw not selected ingredients list
   const allIngredients = laListeDesIngredients();
-  // TODO : remove selected ingredients before draw
-  drawIngredients(allIngredients);
+  const remainingIngredients = allIngredients.filter(
+    (ingredient) => !arrayDesIngredientsSelectionnes.includes(ingredient)
+  );
+  drawIngredients(remainingIngredients);
 }
 
 //***** 5ème partie input dans la modal ingrédients qui affiche un choix d'ingrédients après 3 lettres
@@ -291,4 +305,45 @@ function handleIngredientsSearch() {
 function fermetureModalParChevronUp() {
   const chevronUp = document.querySelector(".fas.fa-chevron-up");
   chevronUp.addEventListener("click", closeIngredientsModal);
+}
+
+// filterRecipesBySearchString filters an array of recipes and returns an array of recipes
+// containing the search string in name, description or ingredients
+function filterRecipesBySearchString(recipesArray, searchString) {
+  return recipesArray.filter((recipe) => {
+    if (recipe.name.toLowerCase().includes(searchString.toLowerCase())) {
+      return true;
+    }
+    if (recipe.description.toLowerCase().includes(searchString.toLowerCase())) {
+      return true;
+    }
+    const ingredients = recipe.ingredients.map((ingredient) =>
+      ingredient.ingredient.toLowerCase()
+    );
+    return ingredients.includes(searchString.toLowerCase());
+  });
+}
+
+function handleGlobalSearch() {
+  const searchPrincipal = document.getElementById("inputsearch");
+  searchPrincipal.addEventListener("input", (e) => {
+    //console.log(e.target.value);
+    let globalSearchString = e.target.value;
+    console.log("globalSearchString", globalSearchString);
+    if (globalSearchString.length >= 3) {
+      // on filtre par ingrédients sélectionnés
+      const recipiesFilteredByIngredients = filterRecipesByIngredients();
+      // on filtre par recherche principale dans les recettes déjà sélectionnées
+      // TODO : write a recipes search function handling all search criterias
+      const recepiesFound = filterRecipesBySearchString(
+        recipiesFilteredByIngredients,
+        globalSearchString
+      );
+      placeCards(recepiesFound);
+    } else {
+      // on ne filtre pas
+      const recipiesFilteredByIngredients = filterRecipesByIngredients();
+      placeCards(recipiesFilteredByIngredients);
+    }
+  });
 }
