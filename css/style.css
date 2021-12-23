@@ -56,6 +56,8 @@ i.fa.fa-search {
 
 nav.navbar.navbar-expand {
   padding: 0;
+  position: relative;
+  min-height: 65px;
 }
 
 .containersection {
@@ -169,7 +171,7 @@ display none */
   padding: 20px;
   font-size: 18px;
   border-radius: 5px;
-  height: 1137px;
+  max-height: 1137px;
   margin-right: 10px;
   width: 740px;
 }
@@ -252,6 +254,9 @@ ul.ingredientslist {
 .containerchooses {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*----- in the card*/

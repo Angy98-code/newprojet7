@@ -242,10 +242,13 @@ function closeIngredientsModal() {
 }
 
 function openIngredientsModal() {
+  //  debugger;
   const modalIngredient = document.querySelector(".ingredientsopen");
   const buttonIngredient = document.querySelector(".chooseingredients");
   modalIngredient.style.display = "block";
   buttonIngredient.style.display = "none";
+  // let menucontainer = document.querySelector(".menucontainer");
+  // menucontainer.style.marginTop = "-1020px";
   const ingredientsInputSearchInModal =
     document.querySelector(".inputingredients");
   // debugger;
@@ -309,6 +312,10 @@ function fermetureModalParChevronUp() {
 
 // filterRecipesBySearchString filters an array of recipes and returns an array of recipes
 // containing the search string in name, description or ingredients
+//////////////////////////////////////////////
+////////////
+///////////////////
+///////////////////////
 function filterRecipesBySearchString(recipesArray, searchString) {
   return recipesArray.filter((recipe) => {
     if (recipe.name.toLowerCase().includes(searchString.toLowerCase())) {
