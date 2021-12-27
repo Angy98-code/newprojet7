@@ -35,7 +35,7 @@ i.fa.fa-search {
 }
 
 ::placeholder {
-  color: rgb(185, 183, 183);
+  color: rgb(230, 227, 227);
   font-weight: 500;
   font-size: 15px;
   text-overflow: ellipsis;
@@ -130,7 +130,7 @@ display none */
 
 .navbarresultchoosesingredients {
   background-color: #3282f7;
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .navbarresultchoosesappareil {
@@ -140,6 +140,7 @@ display none */
 
 .navbarresultchoosesustensiles {
   background-color: #ed6454;
+  margin-right: 20px;
 }
 
 /* DROPDOWN */
@@ -163,8 +164,28 @@ display none */
   color: white;
 }
 
-.ingredientsopen,
-.appareilopen,
+.ingredientsopen {
+  list-style-type: none;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  max-height: 1137px;
+  margin-right: 10px;
+  width: 740px;
+}
+
+.appareilopen {
+  list-style-type: none;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  max-height: 1137px;
+  margin-right: 10px;
+  width: 740px;
+}
+
 .ustensilesopen {
   list-style-type: none;
   color: white;
@@ -191,6 +212,7 @@ display none */
 .ustensilesopen {
   background-color: #ed6454;
   display: none;
+  margin-right: 20px;
 }
 
 .inputingredients {
@@ -203,12 +225,14 @@ display none */
   background-color: #68d9a4;
   border: none;
   width: 400px;
+  color: white;
 }
 
 .inputustensiles {
   background-color: #ed6454;
   border: none;
   width: 400px;
+  color: white;
 }
 
 .labelingredients,
@@ -230,7 +254,9 @@ display none */
   width: 650px;*/
 }
 
-ul.ingredientslist {
+ul.ingredientslist,
+ul.appareillist,
+ul.ustensileslist {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -238,12 +264,6 @@ ul.ingredientslist {
   column-gap: 29px;
   padding-left: 6px;
   list-style-type: none;
-}
-
-.ingredients-item,
-.appareil-item,
-.ustensiles-item {
-  padding-bottom: 10px;
 }
 
 .inputingredients::placeholder,

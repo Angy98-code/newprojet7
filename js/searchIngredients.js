@@ -1,8 +1,3 @@
-//debugger;
-//----------toutes les variables globales
-let arrayDesIngredientsSelectionnes = []; // variable globale de tous les ingrédients sélectionnés (array de strings) ingredientsSelected
-//---------fin des variables globales
-
 // **** 1°) la partie modal ouverte de la liste de tous les ingrédients
 
 //----------principal function
@@ -17,13 +12,12 @@ let arrayDesIngredientsSelectionnes = []; // variable globale de tous les ingré
 function placeIngredients() {
   //debugger;
   // liste des ingrédients dans le panneau de recherche
-  const allIngredients = laListeDesIngredients();
-  drawIngredients(allIngredients);
+  const remainingIngredients = getRemainingIngredients();
+  drawIngredients(remainingIngredients);
   // liste des tags ingredients selectionnés
   addIngredientsClickListener();
   fermetureModalParChevronUp();
   handleIngredientsSearch();
-  handleGlobalSearch();
 }
 // todo :
 // 1- déclarer une fonction drawIngredients avec un paramètre ingredients (array de strings)
@@ -45,47 +39,15 @@ function drawIngredients(ingredients) {
 
 // fin bout utilisé partie 5
 //----------function traitement données
-// laListeDesIngredients retourne un array de strings contenant tous les ingrédients
-// dédupliqués et triés
-//A1
-function laListeDesIngredients() {
-  //debugger;
-  let arrayListIngredients = [];
-  recipes.forEach((recipe) => {
-    recipe.ingredients.forEach((ingredient) => {
-      //(ingredient) correspond à ligne 8-12 dans le tableau recipes
-      arrayListIngredients.push(ingredient.ingredient);
-    });
-  });
-  let annulerDoublons = arrayListIngredients.sort();
-  let uniqueIngredientsArray = [...new Set(annulerDoublons)];
-  //console.log(uniqueIngredientsArray);
-  return Array.from(uniqueIngredientsArray);
-}
-
-//----------addInputCallback() ajoute une callback sur l'évênement input désigné par cssSelector
-//callback
-//pas utilisé pour le moment
-
-function addInputCallback(cssSelector, saisieCB) {
-  //debugger;
-  const nodeChampInputIngredients = document.querySelector(cssSelector);
-
-  nodeChampInputIngredients.addEventListener("input", function (event) {
-    event.preventDefault();
-    console.log(cssSelector, event.target.value);
-    saisieCB(event.target.value);
-  });
-}
 
 //***** 2ème partie injection dans le dom du choix des ingrédients séléctionnés après chaque click
 
 //TODO
-// 1) créer une variable globale de tous les ingrédients sélectionnés (array de strings) arrayDesIngredientsSelectionnes /ex
+// 1) créer une variable globale de tous les ingrédients sélectionnés (array de strings) selectedIngredients /ex
 //ok ligne 2
 // 2) créer 1 fonction qui ajoute un ingrédient à la sélection selectIngredient
 // 3) appeler la fonction  selectIngredient sur click d'un ingrédient de la liste
-// 4) créer 1 fonction qui génére le code Html des tags d'ingrédients à partir d'arrayDesIngredientsSelectionnes (ingredientsTagsHtml)
+// 4) créer 1 fonction qui génére le code Html des tags d'ingrédients à partir d'selectedIngredients (ingredientsTagsHtml)
 // 5) sur click sur 1 ingrédient, appeler selectIngredient puis utiliser ingredientsTagsHtml pour afficher les tags dans le Dom (inline donc je vais utiliser les span)
 
 //------ selectIngredient() ajoute un ingrédient à l'array des ingrédients selectionnés
@@ -93,16 +55,10 @@ function addInputCallback(cssSelector, saisieCB) {
 //B1
 function selectIngredient(ingredient) {
   //debugger;
-  console.log(
-    "arrayDesIngredientsSelectionnes avant push : ",
-    arrayDesIngredientsSelectionnes
-  );
-  arrayDesIngredientsSelectionnes.push(ingredient);
+  console.log("selectedIngredients avant push : ", selectedIngredients);
+  selectedIngredients.push(ingredient);
 
-  console.log(
-    "arrayDesIngredientsSelectionnes après push : ",
-    arrayDesIngredientsSelectionnes
-  );
+  console.log("selectedIngredients après push : ", selectedIngredients);
   // openIngredientsModal();
 }
 
@@ -114,8 +70,9 @@ function addIngredientsClickListener() {
   const ulIngredients = document.querySelector(".ingredientslist");
 
   ulIngredients.addEventListener("click", (e) => {
-    //debugger;
-
+    if (e.target.nodeName !== "LI") {
+      return;
+    }
     const recuperationIngredient = e.target.textContent;
     console.log(
       "recuperationIngredient avant appel fonction selectIngredient : ",
@@ -126,8 +83,7 @@ function addIngredientsClickListener() {
     closeIngredientsModal();
     //debugger;
     // filter recipes by ingredients
-    const recipiesFilteredByIngredients = filterRecipesByIngredients();
-    placeCards(recipiesFilteredByIngredients);
+    placeCards(selectedRecipes());
     console.log(
       "recuperationIngredient après appel selectIngredient : ",
       recuperationIngredient
@@ -135,13 +91,13 @@ function addIngredientsClickListener() {
   });
 }
 
-//----- 4) créer 1 fonction qui génére le code Html des tags d'ingrédients à partir d'arrayDesIngredientsSelectionnes (ingredientsTagsHtml)
+//----- 4) créer 1 fonction qui génére le code Html des tags d'ingrédients à partir d'selectedIngredients (ingredientsTagsHtml)
 // 5) sur click sur 1 ingrédient, appeler selectIngredient puis utiliser drawSelectedIngredientsTags pour afficher les tags dans le Dom (inline donc je vais utiliser les span)
 
 // function drawSelectedIngredientsTags() {
 //   let tagIngredientHtml = "";
 //   const parentNode = document.querySelector(".placeringredientschoisis");
-//   arrayDesIngredientsSelectionnes.forEach((ingredient) => {
+//   selectedIngredients.forEach((ingredient) => {
 //     tagIngredientHtml += `<div class="tagsingredientrow">
 //                             <span class="navbarresultchoosesingredients">
 //                             ${ingredient}
@@ -159,7 +115,7 @@ function addIngredientsClickListener() {
 function drawSelectedIngredientsTags() {
   let tagIngredientHtml = "";
   const parentNode = document.querySelector(".placeringredientschoisis");
-  arrayDesIngredientsSelectionnes.forEach((ingredient) => {
+  selectedIngredients.forEach((ingredient) => {
     tagIngredientHtml += `<div class="tagsingredientrow">
                             <span class="navbarresultchoosesingredients">
                             ${ingredient}
@@ -188,46 +144,26 @@ function drawSelectedIngredientsTags() {
 //   console.log("removeIngredientsClickListener", this, e);
 
 //   const recuperationTagASupprimer = e.target.textContent;
-//   arrayDesIngredientsSelectionnes.remove(recuperationTagASupprimer);
+//   selectedIngredients.remove(recuperationTagASupprimer);
 //   drawSelectedIngredientsTags();
 // };
-//////////////////////////////////////////////////////////////////////////
-// filter recipes by ingredients
-function filterRecipesByIngredients() {
-  // si aucun ingrédient séclectionné
-  if (arrayDesIngredientsSelectionnes.length == 0) {
-    return recipes;
-  }
-  // si des ingrédients sont sélectionnés
-  return recipes.filter((recipe) => {
-    // on récupère un array de string des ingrédients de la recette
-    const ingredientsRecette = recipe.ingredients.map(
-      (ingredient) => ingredient.ingredient
-    );
-    let tousIngredientsPresents = true;
-    // si un ingrédient n'est pas présent, on sait que tous les ingrédients ne sont pas présents
-    arrayDesIngredientsSelectionnes.forEach((ingredientSelectionne) => {
-      if (!ingredientsRecette.includes(ingredientSelectionne)) {
-        tousIngredientsPresents = false;
-      }
-    });
-    return tousIngredientsPresents;
-  });
-}
 
 //c0
 const removeIngredientsClickListener = (e) => {
   // get clicked ingredient name
   //debugger;
   let ingredient = e.target.parentNode.textContent.trim();
-  let idx = arrayDesIngredientsSelectionnes.indexOf(ingredient);
+  let idx = selectedIngredients.indexOf(ingredient);
   if (idx >= 0) {
-    arrayDesIngredientsSelectionnes.splice(idx, 1);
+    selectedIngredients.splice(idx, 1);
   }
   drawSelectedIngredientsTags();
+
+  const remainingIngredients = getRemainingIngredients();
+  drawIngredients(remainingIngredients);
+
   // filter recipes by ingredients
-  const recipiesFilteredByIngredients = filterRecipesByIngredients();
-  placeCards(recipiesFilteredByIngredients);
+  placeCards(selectedRecipes());
 };
 
 //***** 4ème partie fermeture ouverture de la liste des ingrédients
@@ -236,28 +172,24 @@ const removeIngredientsClickListener = (e) => {
 
 function closeIngredientsModal() {
   const modalIngredient = document.querySelector(".ingredientsopen");
-  const buttonIngredient = document.querySelector(".chooseingredients");
+  // const buttonIngredient = document.querySelector(".chooseingredients");
+  const buttonIngredient = document.querySelector(".ingredientsclose");
   modalIngredient.style.display = "none";
   buttonIngredient.style.display = "block";
 }
 
 function openIngredientsModal() {
-  //  debugger;
   const modalIngredient = document.querySelector(".ingredientsopen");
-  const buttonIngredient = document.querySelector(".chooseingredients");
+  // const buttonIngredient = document.querySelector(".chooseingredients");
+  const buttonIngredient = document.querySelector(".ingredientsclose");
   modalIngredient.style.display = "block";
   buttonIngredient.style.display = "none";
-  // let menucontainer = document.querySelector(".menucontainer");
-  // menucontainer.style.marginTop = "-1020px";
   const ingredientsInputSearchInModal =
     document.querySelector(".inputingredients");
   // debugger;
   ingredientsInputSearchInModal.value = "";
   // draw not selected ingredients list
-  const allIngredients = laListeDesIngredients();
-  const remainingIngredients = allIngredients.filter(
-    (ingredient) => !arrayDesIngredientsSelectionnes.includes(ingredient)
-  );
+  const remainingIngredients = getRemainingIngredients();
   drawIngredients(remainingIngredients);
 }
 
@@ -272,18 +204,17 @@ function handleIngredientsSearch() {
     //debugger;
     e.preventDefault();
     const inputIngredients = e.target.value;
-    let filteredIngredients = [];
+    let filteredIngredients = getIngredients(selectedRecipes());
     // const searchInputIngredients = inputIngredients.toLowerCase();
     // console.log(searchInputIngredients);
 
     if (inputIngredients.length >= 1) {
-      const allIngredients = laListeDesIngredients();
       // todo :
       // 1- créer une variable filteredIngredients
 
       // 2- utiliser filter() sur allIngredients pour garder les ingrédients contenant la string inputIngredients (recup...)
       // console.log(allIngredients)
-      filteredIngredients = allIngredients.filter((ingredient) => {
+      filteredIngredients = filteredIngredients.filter((ingredient) => {
         return ingredient
           .toLowerCase()
           .includes(inputIngredients.toLowerCase());
@@ -294,10 +225,11 @@ function handleIngredientsSearch() {
       console.log(filteredIngredients);
       // 3- passer filteredIngredients en paramètre à drawIngredients
 
-      drawIngredients(filteredIngredients);
+      const remainingIngredients = getRemainingIngredients();
+      drawIngredients(remainingIngredients);
     } else {
-      const allIngredients = laListeDesIngredients();
-      drawIngredients(allIngredients);
+      const remainingIngredients = getRemainingIngredients();
+      drawIngredients(remainingIngredients);
     }
   });
 }
@@ -308,49 +240,4 @@ function handleIngredientsSearch() {
 function fermetureModalParChevronUp() {
   const chevronUp = document.querySelector(".fas.fa-chevron-up");
   chevronUp.addEventListener("click", closeIngredientsModal);
-}
-
-// filterRecipesBySearchString filters an array of recipes and returns an array of recipes
-// containing the search string in name, description or ingredients
-//////////////////////////////////////////////
-////////////
-///////////////////
-///////////////////////
-function filterRecipesBySearchString(recipesArray, searchString) {
-  return recipesArray.filter((recipe) => {
-    if (recipe.name.toLowerCase().includes(searchString.toLowerCase())) {
-      return true;
-    }
-    if (recipe.description.toLowerCase().includes(searchString.toLowerCase())) {
-      return true;
-    }
-    const ingredients = recipe.ingredients.map((ingredient) =>
-      ingredient.ingredient.toLowerCase()
-    );
-    return ingredients.includes(searchString.toLowerCase());
-  });
-}
-
-function handleGlobalSearch() {
-  const searchPrincipal = document.getElementById("inputsearch");
-  searchPrincipal.addEventListener("input", (e) => {
-    //console.log(e.target.value);
-    let globalSearchString = e.target.value;
-    console.log("globalSearchString", globalSearchString);
-    if (globalSearchString.length >= 3) {
-      // on filtre par ingrédients sélectionnés
-      const recipiesFilteredByIngredients = filterRecipesByIngredients();
-      // on filtre par recherche principale dans les recettes déjà sélectionnées
-      // TODO : write a recipes search function handling all search criterias
-      const recepiesFound = filterRecipesBySearchString(
-        recipiesFilteredByIngredients,
-        globalSearchString
-      );
-      placeCards(recepiesFound);
-    } else {
-      // on ne filtre pas
-      const recipiesFilteredByIngredients = filterRecipesByIngredients();
-      placeCards(recipiesFilteredByIngredients);
-    }
-  });
 }

@@ -76,7 +76,7 @@
                 <!--bloc des 3 boutons ingrédients, appareil et ustensiles-->
                 <nav class="navbar navbar-expand">
                     <!--div parent-->
-                    <span class="containerchooses">
+                    <div class="containerchooses">
 
                         <!--ingredients close-->
                         <div class="ingredientsclose">
@@ -109,7 +109,7 @@
                         <div class="appareilclose">
 
                             <div class="chooseappareil">
-                                <button type="button" class="btn btn-success">Appareil
+                                <button type="button" onclick="OpenPanelAppliances()" class="btn btn-success">Appareil
                                     <div class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                     </div>
@@ -121,48 +121,22 @@
                         <div class="appareilopen">
 
                             <div class="navopenappareil">
-                                <label class="labelappareil">Recherche un ingrédient</label>
-                                <input class="inputappareil">
-                                <i class="fas fa-chevron-up"></i>
+                                <input oninput="OnApplianceInput(event)" class="inputappareil" name="inputappareil"
+                                    placeholder="Recherche un appareil">
+                                <i onclick="ClosePanelAppliances()" class="fas fa-chevron-up"></i>
                             </div>
 
-                            <div class="appareillist">
+                            <ul class="appareillist">
                                 <li class="appareil-item" href="#">Lait de coco</li>
                                 <li class="appareil-item" href="#">Jus de citron</li>
-                                <li class="appareil-item" href="#">Crème de coco</li>
-                                <li class="appareil-item" href="#">Sucre</li>
-                                <li class="appareil-item" href="#">Glaçons</li>
-                                <li class="appareil-item" href="#">Thon Rouge (ou blanc)</li>
-                                <li class="appareil-item" href="#">Concombre</li>
-                                <li class="appareil-item" href="#">Tomate</li>
-                                <li class="appareil-item" href="#">Carotte</li>
-                                <li class="appareil-item" href="#">Citron Vert</li>
-                                <li class="appareil-item" href="#">Coulis de tomate</li>
-                                <li class="appareil-item" href="#">Oignon</li>
-                                <li class="appareil-item" href="#">Poivron rouge</li>
-                                <li class="appareil-item" href="#">Huile d'olive</li>
-                                <li class="appareil-item" href="#">Riz blanc</li>
-                                <li class="appareil-item" href="#">Thon en miettes</li>
-                                <li class="appareil-item" href="#">Tomate</li>
-                                <li class="appareil-item" href="#">Oeuf dur</li>
-                                <li class="appareil-item" href="#">Maïs</li>
-                                <li class="appareil-item" href="#">Vinaigrette</li>
-                                <li class="appareil-item" href="#">Pâte feuilletée</li>
-                                <li class="appareil-item" href="#">Crème fraiche</li>
-                                <li class="appareil-item" href="#">gruyère râpé</li>
-                                <li class="appareil-item" href="#">Moutarde de Dijon</li>
-                                <li class="appareil-item" href="#">Pâte brisée</li>
-                                <li class="appareil-item" href="#">Pomme</li>
-                                <li class="appareil-item" href="#">Oeuf</li>
-                                <li class="appareil-item" href="#">Sucre en Poudre</li>
-                            </div>
+                            </ul>
                         </div>
 
                         <!--ustensiles close-->
                         <div class="ustensilesclose">
 
                             <div class="chooseustensiles">
-                                <button type="button" class="btn btn-danger">Ustensiles
+                                <button type="button" onclick="OpenPanelUstensiles()" class="btn btn-danger">Ustensiles
                                     <div class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                     </div>
@@ -174,44 +148,18 @@
                         <div class="ustensilesopen">
 
                             <div class="navopenustensiles">
-                                <label class="labelustensiles">Recherche un ingrédient</label>
-                                <input class="inputustensiles">
-                                <i class="fas fa-chevron-up"></i>
+                                <input oninput="OnUstensileInput(event)" class="inputustensiles" name="inputustensiles"
+                                    placeholder="Recherche un ustensil">
+                                <i onclick="ClosePanelUstensiles()" class="fas fa-chevron-up"></i>
                             </div>
 
-                            <div class="ustensileslist">
+                            <ul class="ustensileslist">
                                 <li class="ustensiles-item" href="#">Lait de coco</li>
                                 <li class="ustensiles-item" href="#">Jus de citron</li>
-                                <li class="ustensiles-item" href="#">Crème de coco</li>
-                                <li class="ustensiles-item" href="#">Sucre</li>
-                                <li class="ustensiles-item" href="#">Glaçons</li>
-                                <li class="ustensiles-item" href="#">Thon Rouge (ou blanc)</li>
-                                <li class="ustensiles-item" href="#">Concombre</li>
-                                <li class="ustensiles-item" href="#">Tomate</li>
-                                <li class="ustensiles-item" href="#">Carotte</li>
-                                <li class="ustensiles-item" href="#">Citron Vert</li>
-                                <li class="ustensiles-item" href="#">Coulis de tomate</li>
-                                <li class="ustensiles-item" href="#">Oignon</li>
-                                <li class="ustensiles-item" href="#">Poivron rouge</li>
-                                <li class="ustensiles-item" href="#">Huile d'olive</li>
-                                <li class="ustensiles-item" href="#">Riz blanc</li>
-                                <li class="ustensiles-item" href="#">Thon en miettes</li>
-                                <li class="ustensiles-item" href="#">Tomate</li>
-                                <li class="ustensiles-item" href="#">Oeuf dur</li>
-                                <li class="ustensiles-item" href="#">Maïs</li>
-                                <li class="ustensiles-item" href="#">Vinaigrette</li>
-                                <li class="ustensiles-item" href="#">Pâte feuilletée</li>
-                                <li class="ustensiles-item" href="#">Crème fraiche</li>
-                                <li class="ustensiles-item" href="#">gruyère râpé</li>
-                                <li class="ustensiles-item" href="#">Moutarde de Dijon</li>
-                                <li class="ustensiles-item" href="#">Pâte brisée</li>
-                                <li class="ustensiles-item" href="#">Pomme</li>
-                                <li class="ustensiles-item" href="#">Oeuf</li>
-                                <li class="ustensiles-item" href="#">Sucre en Poudre</li>
-                            </div>
+                            </ul>
                         </div>
 
-                    </span>
+                    </div>
                     <!--fin containerchooses-->
                 </nav>
                 <!--fin navbar navbar-expand-->
@@ -243,8 +191,13 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/recipes.js"></script>
+    <script type="text/javascript" src="js/selectRecipes.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
     <script type="text/javascript" src="js/cards.js"></script>
+    <script type="text/javascript" src="js/searchGlobal.js"></script>
     <script type="text/javascript" src="js/searchIngredients.js"></script>
+    <script type="text/javascript" src="js/searchAppliances.js"></script>
+    <script type="text/javascript" src="js/searchUstensils.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script src="https://kit.fontawesome.com/941542f664.js" crossorigin="anonymous"></script>
 

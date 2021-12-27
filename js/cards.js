@@ -36,7 +36,7 @@ function oneCardHtml(recipe) {
 //placeCards fonction principale
 function placeCards(recipesToDraw) {
   const parentNode = document.querySelector(".allmenucards");
-	parentNode.innerHTML = '';
+  parentNode.innerHTML = "";
   recipesToDraw.forEach((recipe) => {
     //  console.log(recipe);
     //mettre chaque menu dans une card

@@ -5,3 +5,5 @@
 
 placeCards(recipes);
 placeIngredients();
+
+handleGlobalSearch();
