@@ -1,6 +1,7 @@
 // OpenPanel ouvre le panneau de recherche
 function OpenPanel(panel) {
   // show open panel
+  console.log("openpanel");
   const openedPanelNode = document.querySelector("." + panel + "open");
   openedPanelNode.style.display = "block";
   // reset panel input field
@@ -14,18 +15,15 @@ function OpenPanel(panel) {
 // ClosePanel ferme le panneau de recherche
 function ClosePanel(panel) {
   // show open panel
+  console.log("closepanel");
   const openedPanelNode = document.querySelector("." + panel + "open");
   openedPanelNode.style.display = "none";
   // hide closed panel
   const closedPanelNode = document.querySelector("." + panel + "close");
   closedPanelNode.style.display = "block";
+  
 }
 
-window.addEventListener("click", () => {
-  closeIngredientsModal();
-  // ClosePanelAppliances();/////////////////////////////////////////////////////////
-  // ClosePanelUstensiles();
-});
 // drawList inserts listItems elements in the dom on the UL node defined by selector.
 // each li has a class of className
 // listItems must be an array of strings

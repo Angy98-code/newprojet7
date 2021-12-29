@@ -443,8 +443,8 @@ const recipes = [
     time: 40,
     description:
       "Éplucher les fruits et les couper en morceaux, les mettre dans une casserolle en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
-    appliance: "Casserole",
-    ustensils: ["couteau", "économe"],
+    appliance: "casserolle",
+    ustensils: ["couteau", "Économe"],
   },
   {
     id: 13,
@@ -479,7 +479,7 @@ const recipes = [
     time: 40,
     description:
       "Cuire les pommes de terre environ 30 minutes. Découper les échalottes finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter",
-    appliance: "Casserole",
+    appliance: "casserolle",
     ustensils: ["couteau", "saladier", "cuillère en bois"],
   },
   {
@@ -766,7 +766,7 @@ const recipes = [
     time: 30,
     description:
       "Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.",
-    appliance: "Casserolle.",
+    appliance: "casserolle",
     ustensils: ["Cuillère en bois", "louche", "couteau"],
   },
   {
@@ -986,7 +986,7 @@ const recipes = [
     time: 15,
     description:
       "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
-    appliance: "Casserolle",
+    appliance: "casserolle",
     ustensils: ["couteau", "cuillère en bois"],
   },
   {
@@ -1116,7 +1116,7 @@ const recipes = [
     description:
       "Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier",
     appliance: "Poële",
-    ustensils: ["Couteau", "économe"],
+    ustensils: ["Couteau", "Économe"],
   },
   {
     id: 32,
@@ -1223,7 +1223,7 @@ const recipes = [
     description:
       "Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserolle d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
     appliance: "Mixer",
-    ustensils: ["couteau", "économe", "cuillère en bois"],
+    ustensils: ["couteau", "Économe", "cuillère en bois"],
   },
   {
     id: 35,
@@ -1461,7 +1461,7 @@ const recipes = [
     time: 20,
     description:
       "Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais",
-    appliance: "Casserolle",
+    appliance: "casserolle",
     ustensils: ["fouet", "spatule", "verres"],
   },
   {
@@ -1562,7 +1562,7 @@ const recipes = [
     time: 15,
     description:
       "Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson. Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. Mettre dans des verres",
-    appliance: "Casserolle",
+    appliance: "casserolle",
     ustensils: ["cuillère en bois"],
   },
   {
@@ -1593,7 +1593,7 @@ const recipes = [
     time: 30,
     description:
       "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
-    appliance: "Casserolle",
+    appliance: "casserolle",
     ustensils: ["fouet", "saladier"],
   },
   {

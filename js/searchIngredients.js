@@ -241,3 +241,8 @@ function fermetureModalParChevronUp() {
   const chevronUp = document.querySelector(".fas.fa-chevron-up");
   chevronUp.addEventListener("click", closeIngredientsModal);
 }
+window.addEventListener("click", () => {
+  closeIngredientsModal();
+  // ClosePanelAppliances();/////////////////////////////////////////////////////////
+  // ClosePanelUstensiles();
+});
