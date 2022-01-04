@@ -10,13 +10,22 @@ function OpenPanelUstensiles() {
 }
 
 // ClosePanelUstensiles is the click callback for the ustensiles close panel button
-function ClosePanelUstensiles() {
+function ClosePanelUstensiles(e) {
+  if (
+    e &&
+    (e.target.classList.contains("btn-danger") ||
+      e.target.classList.contains("openclosechevron") ||
+      e.target.classList.contains("fas"))
+  ) {
+    return;
+  }
   ClosePanel("ustensiles");
 }
 
-// window.addEventListener("click", () => {
-//   ClosePanelUstensiles();
-// });
+window.addEventListener("click", (e) => {
+  console.log(e);
+  ClosePanelUstensiles(e);
+});
 
 function removeUstensilTagCB(e) {
   // remove the unstensile from the selected unstensiles array
