@@ -4,9 +4,7 @@ function handleGlobalSearch() {
     //console.log(e.target.value);
     globalSearchString = e.target.value; // globalSearchString is global, defined in selectRecipes
     console.log("globalSearchString", globalSearchString);
-
-    drawIngredients(getRemainingIngredients());
-
+    CloseAllPanels();
     placeCards(selectedRecipes());
   });
 }

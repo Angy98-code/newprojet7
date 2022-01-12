@@ -21,7 +21,6 @@ function ClosePanel(panel) {
   // hide closed panel
   const closedPanelNode = document.querySelector("." + panel + "close");
   closedPanelNode.style.display = "block";
-  
 }
 
 // drawList inserts listItems elements in the dom on the UL node defined by selector.

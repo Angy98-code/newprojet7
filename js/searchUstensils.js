@@ -1,5 +1,6 @@
 // OpenPanelUstensiles is the click callback for the "ustensiles" button
 function OpenPanelUstensiles() {
+  CloseAllPanels();
   OpenPanel("ustensiles");
   drawList(
     getRemainingUstensils(),
@@ -9,22 +10,18 @@ function OpenPanelUstensiles() {
   );
 }
 
-// ClosePanelUstensiles is the click callback for the ustensiles close panel button
-function ClosePanelUstensiles(e) {
-  if (
-    e &&
-    (e.target.classList.contains("btn-danger") ||
-      e.target.classList.contains("openclosechevron") ||
-      e.target.classList.contains("fas"))
-  ) {
-    return;
-  }
+function CloseAllPanels() {
+  ClosePanel("ingredients");
+  ClosePanel("appareil");
   ClosePanel("ustensiles");
 }
 
+// close panels on click on background
 window.addEventListener("click", (e) => {
-  console.log(e);
-  ClosePanelUstensiles(e);
+  console.log(e.target.nodeName);
+  if (["DIV", "BODY"].includes(e.target.nodeName)) {
+    CloseAllPanels();
+  }
 });
 
 function removeUstensilTagCB(e) {
@@ -39,6 +36,7 @@ function removeUstensilTagCB(e) {
     "ustensiles-item",
     "selectUstensile"
   );
+  ClosePanel("ustensiles");
   placeCards(selectedRecipes());
 }
 
@@ -58,7 +56,7 @@ function selectUstensile(ustensileName) {
     removeUstensilTagCB
   );
   document.querySelector(".inputustensiles").value = "";
-  ClosePanelUstensiles();
+  ClosePanel("ustensiles");
   placeCards(selectedRecipes());
 }
 

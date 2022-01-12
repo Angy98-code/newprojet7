@@ -82,7 +82,7 @@
                         <div class="ingredientsclose">
 
                             <div class="chooseingredients">
-                                <button type="button" onclick="openIngredientsModal(event)" class="btn btn-primary "
+                                <button type="button" onclick="OpenPanelIngredients()" class="btn btn-primary "
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingredients
                                     <div class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -95,9 +95,9 @@
                         <div class="ingredientsopen">
 
                             <div class="navopeningredients">
-                                <input class="inputingredients" name="inputingredients"
-                                    placeholder="Recherche un ingrédient">
-                                <i class="fas fa-chevron-up"></i>
+                                <input oninput="OnIngredientInput(event)" class="inputingredients"
+                                    name="inputingredients" placeholder="Recherche un ingrédient">
+                                <i onclick="ClosePanel('ingredients')" class="fas fa-chevron-up"></i>
                             </div>
 
                             <ul class="ingredientslist">
@@ -123,7 +123,7 @@
                             <div class="navopenappareil">
                                 <input oninput="OnApplianceInput(event)" class="inputappareil" name="inputappareil"
                                     placeholder="Recherche un appareil">
-                                <i onclick="ClosePanelAppliances()" class="fas fa-chevron-up"></i>
+                                <i onclick="ClosePanel('appareil')" class="fas fa-chevron-up"></i>
                             </div>
 
                             <ul class="appareillist">
@@ -149,8 +149,8 @@
 
                             <div class="navopenustensiles">
                                 <input oninput="OnUstensileInput(event)" class="inputustensiles" name="inputustensiles"
-                                    placeholder="Recherche un ustensil">
-                                <i onclick="ClosePanelUstensiles()" class="fas fa-chevron-up"></i>
+                                    placeholder="Recherche un ustensile">
+                                <i onclick="ClosePanel('ustensiles')" class="fas fa-chevron-up"></i>
                             </div>
 
                             <ul class="ustensileslist">
@@ -194,10 +194,10 @@
     <script type="text/javascript" src="js/selectRecipes.js"></script>
     <script type="text/javascript" src="js/tools.js"></script>
     <script type="text/javascript" src="js/cards.js"></script>
-    <script type="text/javascript" src="js/searchGlobal.js"></script>
     <script type="text/javascript" src="js/searchIngredients.js"></script>
     <script type="text/javascript" src="js/searchAppliances.js"></script>
     <script type="text/javascript" src="js/searchUstensils.js"></script>
+    <script type="text/javascript" src="js/searchGlobal.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script src="https://kit.fontawesome.com/941542f664.js" crossorigin="anonymous"></script>
 

@@ -35,7 +35,7 @@ i.fa.fa-search {
 }
 
 ::placeholder {
-  color: rgb(230, 227, 227);
+  color: rgb(201, 198, 198);
   font-weight: 500;
   font-size: 15px;
   text-overflow: ellipsis;
@@ -252,6 +252,7 @@ display none */
   flex-wrap: wrap;
   /* height: 400px;
   width: 650px;*/
+  cursor: pointer;
 }
 
 ul.ingredientslist,

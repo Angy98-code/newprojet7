@@ -1,5 +1,6 @@
 // OpenPanelAppliances is the click callback for the "appareil" button
 function OpenPanelAppliances() {
+  CloseAllPanels();
   OpenPanel("appareil");
   drawList(
     getRemainingAppliances(),
@@ -9,25 +10,7 @@ function OpenPanelAppliances() {
   );
 }
 
-// ClosePanelAppliances is the click callback for the appareils close panel button
-function ClosePanelAppliances(e) {
-  if (
-    e &&
-    (e.target.classList.contains("btn-success") ||
-      e.target.classList.contains("openclosechevron") ||
-      e.target.classList.contains("fas"))
-  ) {
-    return;
-  }
-  ClosePanel("appareil");
-}
-
-window.addEventListener("click", (e) => {
-  console.log(e);
-  ClosePanelAppliances(e);
-});
-
-function removeTagCB(e) {
+function removeApplianceTagCB(e) {
   // remove the appliance from the selected appliances array
   const appliance = e.target.parentNode.textContent.trim();
   removeFromArray(selectedAppliances, appliance);
@@ -55,10 +38,10 @@ function selectAppliance(applianceName) {
     selectedAppliances,
     ".placerappareilchoisis",
     "navbarresultchoosesappareil",
-    removeTagCB
+    removeApplianceTagCB
   );
   document.querySelector(".inputappareil").value = "";
-  ClosePanelAppliances();
+  ClosePanel("appareil");
   placeCards(selectedRecipes());
 }
 
@@ -74,7 +57,3 @@ function OnApplianceInput(e) {
 //appareillist = ul
 //appareil-item = li
 //// selectAppliance is the callback called at click on an appliance in the opened panel
-
-// window.addEventListener("click", () => {
-//   ClosePanelAppliances();
-// });

@@ -4,6 +4,5 @@
 //console.log("oneCardHtml", oneCardHtml(recipes[0]));
 
 placeCards(recipes);
-placeIngredients();
 
 handleGlobalSearch();
