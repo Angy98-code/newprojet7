@@ -25,7 +25,7 @@ window.addEventListener("click", (e) => {
 });
 
 function removeUstensilTagCB(e) {
-  // remove the unstensile from the selected unstensiles array
+  // remove the ustensile from the selected ustensiles array
   const unstensile = e.target.parentNode.textContent.trim();
   removeFromArray(selectedUstensils, unstensile);
   // remove the tag element from the dom
@@ -40,7 +40,7 @@ function removeUstensilTagCB(e) {
   placeCards(selectedRecipes());
 }
 
-// selectAppliance is the callback called at click on an appliance in the opened panel
+// selectUstensile is the callback called at click on an appliance in the opened panel
 function selectUstensile(ustensileName) {
   selectedUstensils.push(ustensileName);
   drawList(

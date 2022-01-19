@@ -23,7 +23,8 @@ function ClosePanel(panel) {
   closedPanelNode.style.display = "block";
 }
 
-// drawList inserts listItems elements in the dom on the UL node defined by selector.
+// drawList inserts listItems elements in the dom 
+//on the UL node defined by selector.
 // each li has a class of className
 // listItems must be an array of strings
 function drawList(listItems, selector, className, clickFnName) {
