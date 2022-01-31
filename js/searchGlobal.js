@@ -12,10 +12,12 @@ function handleGlobalSearch() {
       if (recepiesFound === 0) {
         notFound.innerHTML =
           "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
-      } else {
-        notFound.innerHTML = `J'ai trouvé ${recepiesFound} recettes`;
-      }
-    } else {
+      } 
+      //else {
+      //  notFound.innerHTML = `J'ai trouvé ${recepiesFound} recettes`;
+     // }
+    //} 
+    else {
       notFound.innerHTML = "";
     }
   });
