@@ -82,29 +82,38 @@ function allUstensils(recipes) {
 
 // selectedRecipes returns the recipes selected by main search string, ingredients, appliances and ustencils
 function selectedRecipes() {
-  let filteredRecipes = globalFilteredRecipes;
+  let filteredRecipes = recipes;
   if (globalSearchString.length >= 3) {
-    filteredRecipes = globalFilteredRecipes.filter((recipe) => {
+    // use for...of instead of native filter function
+    filteredRecipes = [];
+    for (recipe of recipes) {
       if (
         recipe.name.toLowerCase().includes(globalSearchString.toLowerCase())
       ) {
-        return true;
+        filteredRecipes.push(recipe);
+        continue;
       }
       if (
         recipe.description
           .toLowerCase()
           .includes(globalSearchString.toLowerCase())
       ) {
-        return true;
+        filteredRecipes.push(recipe);
+        continue;
       }
       const ingredients = recipe.ingredients.map((ingredient) =>
         ingredient.ingredient.toLowerCase()
       );
-      return ingredients.includes(globalSearchString.toLowerCase());
-    });
+      const ingredientsFound = ingredients.includes(
+        globalSearchString.toLowerCase()
+      );
+      if (ingredientsFound) {
+        filteredRecipes.push(recipe);
+      }
+    }
   }
 
-  // filter remaining reipces by ingredients
+  // filter remaining recipes by ingredients
   if (selectedIngredients.length > 0) {
     // si des ingrédients sont sélectionnés
     filteredRecipes = filteredRecipes.filter((recipe) => {
@@ -123,7 +132,7 @@ function selectedRecipes() {
     });
   }
 
-  // filter remaining reipces by appliance
+  // filter remaining recipes by appliance
   if (selectedAppliances.length > 0) {
     // si des ingrédients sont sélectionnés
     filteredRecipes = filteredRecipes.filter((recipe) => {
@@ -132,7 +141,7 @@ function selectedRecipes() {
     });
   }
 
-  // filter remaining reipces by ustensiles
+  // filter remaining recipes by ustensiles
   if (selectedUstensils.length > 0) {
     // si des ustensils sont sélectionnés
     filteredRecipes = filteredRecipes.filter((recipe) => {
@@ -146,6 +155,5 @@ function selectedRecipes() {
       return allUstensilsPresent;
     });
   }
-  globalFilteredRecipes = filteredRecipes;
   return filteredRecipes;
 }
