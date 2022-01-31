@@ -18,7 +18,7 @@ function CloseAllPanels() {
 
 // close panels on click on background
 window.addEventListener("click", (e) => {
-  console.log(e.target.nodeName);
+  //console.log(e.target.nodeName);
   if (["DIV", "BODY"].includes(e.target.nodeName)) {
     CloseAllPanels();
   }
@@ -63,7 +63,7 @@ function selectUstensile(ustensileName) {
 // OnUstensileInput
 function OnUstensileInput(e) {
   const ustensileSearchStr = e.target.value;
-  console.log("OnUstensileInput", ustensileSearchStr);
+  //console.log("OnUstensileInput", ustensileSearchStr);
   const ustensiles = getRemainingUstensils().filter((ustensile) => {
     return ustensile.toLowerCase().includes(ustensileSearchStr.toLowerCase());
   });
