@@ -67,40 +67,44 @@ function getRemainingUstensils() {
   });
 }
 
+// // allUstensils returns the list of ustensils, sorted and deduped
+// function allUstensils() {
+//   let arrayUstensils = [];
+//   recipes.forEach((recipe) => {
+//     recipe.ustensils.forEach((ustensil) => {
+//       arrayUstensils.push(ustensil);
+//     });
+//   });
+//   let sorted = arrayUstensils.sort();
+//   let deduped = [...new Set(sorted)];
+//   return Array.from(deduped);
+// }
+
 // selectedRecipes returns the recipes selected by main search string, ingredients, appliances and ustencils
 function selectedRecipes() {
   let filteredRecipes = recipes;
   if (globalSearchString.length >= 3) {
-    // use for...of instead of native filter function
-    filteredRecipes = [];
-    for (recipe of recipes) {
+    filteredRecipes = recipes.filter((recipe) => {
       if (
         recipe.name.toLowerCase().includes(globalSearchString.toLowerCase())
       ) {
-        filteredRecipes.push(recipe);
-        continue;
+        return true;
       }
       if (
         recipe.description
           .toLowerCase()
           .includes(globalSearchString.toLowerCase())
       ) {
-        filteredRecipes.push(recipe);
-        continue;
+        return true;
       }
       const ingredients = recipe.ingredients.map((ingredient) =>
         ingredient.ingredient.toLowerCase()
       );
-      const ingredientsFound = ingredients.includes(
-        globalSearchString.toLowerCase()
-      );
-      if (ingredientsFound) {
-        filteredRecipes.push(recipe);
-      }
-    }
+      return ingredients.includes(globalSearchString.toLowerCase());
+    });
   }
 
-  // filter remaining recipes by ingredients
+  // filter remaining reipces by ingredients
   if (selectedIngredients.length > 0) {
     // si des ingrédients sont sélectionnés
     filteredRecipes = filteredRecipes.filter((recipe) => {
@@ -119,7 +123,7 @@ function selectedRecipes() {
     });
   }
 
-  // filter remaining recipes by appliance
+  // filter remaining reipces by appliance
   if (selectedAppliances.length > 0) {
     // si des ingrédients sont sélectionnés
     filteredRecipes = filteredRecipes.filter((recipe) => {
@@ -128,7 +132,7 @@ function selectedRecipes() {
     });
   }
 
-  // filter remaining recipes by ustensiles
+  // filter remaining reipces by ustensiles
   if (selectedUstensils.length > 0) {
     // si des ustensils sont sélectionnés
     filteredRecipes = filteredRecipes.filter((recipe) => {

@@ -44,36 +44,14 @@
         </header>
 
         <section>
-            <!--cours : les éléments de navigation doivent être placés dans li ul a-->
-            <!--cours : navbar brand pour la partie logo marque-->
-            <!--cours : utiliser active ex nav-item active pour le 1er li-->
             <!---search section with the 3 buttons-->
             <div class="containersection">
 
                 <!--les div apparaissant après avoir fait son choix (en haut), -->
                 <div class="navbarresultchooses">
-                    <div class="placeringredientschoisis">
-                        <!--<div class="tagsingredientrow">
-                            <span class="navbarresultchoosesingredients">
-                            ${ingredient}
-                            <i class="far fa-times-circle" id="boutonfermeturetag"></i>
-                            </span>
-                          </div>-->
-                    </div>
-                    <div class="placerappareilchoisis">
-                        <!--<div class="tagsappareilrow">
-                            <span class="navbarresultchoosesappareil">${ingredient}
-                                <i class="far fa-times-circle" id="boutonfermeturetag"></i>
-                            </span>
-                        </div>-->
-                    </div>
-                    <div class="placerustensileschoisis">
-                        <!--<div class="tagsustensilesrow">
-                            <span class="navbarresultchoosesustensiles">${ingredient}
-                                <i class="far fa-times-circle" id="boutonfermeturetag"></i>
-                            </span>
-                        </div>-->
-                    </div>
+                    <div class="placeringredientschoisis"></div>
+                    <div class="placerappareilchoisis"></div>
+                    <div class="placerustensileschoisis"></div>
                 </div>
 
                 <!--bloc des 3 boutons ingrédients, appareil et ustensiles-->
@@ -103,9 +81,7 @@
                                 <i onclick="ClosePanel('ingredients')" class="fas fa-chevron-up"></i>
                             </div>
 
-                            <ul class="ingredientslist">
-                                <!--dedans il y aura des span-->
-                            </ul>
+                            <ul class="ingredientslist"></ul>
                         </div>
 
                         <!--appareil close-->
@@ -172,8 +148,6 @@
         </section>
 
         <menu>
-            <!--cours : les menus container-lift sur toute la large-->
-            <!--cours : taille -sm -md -lg -xl-->
             <div class="menucontainer">
                 <div class="allmenucards">
                     <!--template string cards.js-->

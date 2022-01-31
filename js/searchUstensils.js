@@ -18,7 +18,6 @@ function CloseAllPanels() {
 
 // close panels on click on background
 window.addEventListener("click", (e) => {
-  console.log(e.target.nodeName);
   if (["DIV", "BODY"].includes(e.target.nodeName)) {
     CloseAllPanels();
   }

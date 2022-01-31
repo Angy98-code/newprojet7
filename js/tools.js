@@ -1,7 +1,7 @@
 // OpenPanel ouvre le panneau de recherche
 function OpenPanel(panel) {
   // show open panel
-  console.log("openpanel");
+  //console.log("openpanel");
   const openedPanelNode = document.querySelector("." + panel + "open");
   openedPanelNode.style.display = "block";
   // reset panel input field
@@ -15,7 +15,7 @@ function OpenPanel(panel) {
 // ClosePanel ferme le panneau de recherche
 function ClosePanel(panel) {
   // show open panel
-  console.log("closepanel");
+  //console.log("closepanel");
   const openedPanelNode = document.querySelector("." + panel + "open");
   openedPanelNode.style.display = "none";
   // hide closed panel
@@ -56,17 +56,6 @@ function drawTags(tagsArray, parentNodeSelector, spanClass, removeCB) {
     iTag.addEventListener("click", removeCB);
   });
 }
-
-/*
-// addInputCallback() ajoute une callback sur l'évênement input désigné par cssSelector
-function addInputCallback(cssSelector, inputCB) {
-  const node = document.querySelector(cssSelector);
-  node.addEventListener("input", function (event) {
-    event.preventDefault();
-    inputCB(event.target.value);
-  });
-}
-*/
 
 // removeFromArray removes the element from array arr
 function removeFromArray(arr, element) {
