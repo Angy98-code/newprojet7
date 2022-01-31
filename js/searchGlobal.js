@@ -16,7 +16,7 @@ function handleGlobalSearch() {
       //else {
       //  notFound.innerHTML = `J'ai trouvé ${recepiesFound} recettes`;
      // }
-    //} 
+    } 
     else {
       notFound.innerHTML = "";
     }
