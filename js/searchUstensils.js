@@ -62,7 +62,6 @@ function selectUstensile(ustensileName) {
 // OnUstensileInput
 function OnUstensileInput(e) {
   const ustensileSearchStr = e.target.value;
-  console.log("OnUstensileInput", ustensileSearchStr);
   const ustensiles = getRemainingUstensils().filter((ustensile) => {
     return ustensile.toLowerCase().includes(ustensileSearchStr.toLowerCase());
   });
