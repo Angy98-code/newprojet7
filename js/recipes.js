@@ -2043,11 +2043,8 @@ let selectedIngredients = [];
 let selectedAppliances = [];
 let selectedUstensils = [];
 let globalSearchString = "";
-<<<<<<< HEAD
 let globalFilteredRecipes = recipes;
-=======
 
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
 function getIngredients(recipes) {
   let arrayIngredients = [];
   recipes.forEach((recipe) => {
@@ -2102,16 +2099,23 @@ function getRemainingUstensils() {
   });
 }
 
+// // allUstensils returns the list of ustensils, sorted and deduped
+// function allUstensils(recipes) {
+//   let arrayUstensils = [];
+//   recipes.forEach((recipe) => {
+//     recipe.ustensils.forEach((ustensil) => {
+//       arrayUstensils.push(ustensil);
+//     });
+//   });
+//   let sorted = arrayUstensils.sort();
+//   let deduped = [...new Set(sorted)];
+//   return Array.from(deduped);
+// }
+
 function selectedRecipes() {
-<<<<<<< HEAD
   let filteredRecipes = globalFilteredRecipes;
   if (globalSearchString.length >= 3) {
     filteredRecipes = globalFilteredRecipes.filter((recipe) => {
-=======
-  let filteredRecipes = recipes;
-  if (globalSearchString.length >= 3) {
-    filteredRecipes = recipes.filter((recipe) => {
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       if (
         recipe.name.toLowerCase().includes(globalSearchString.toLowerCase())
       ) {
@@ -2131,24 +2135,12 @@ function selectedRecipes() {
     });
   }
 
-<<<<<<< HEAD
-  // filter remaining reipces by ingredients
-  if (selectedIngredients.length > 0) {
-    // si des ingrédients sont sélectionnés
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      // on récupère un array de string des ingrédients de la recette
-=======
   if (selectedIngredients.length > 0) {
     filteredRecipes = filteredRecipes.filter((recipe) => {
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       const ingredientsInRecipe = recipe.ingredients.map(
         (ingredient) => ingredient.ingredient
       );
       let allIngredientsPresent = true;
-<<<<<<< HEAD
-      // si un ingrédient n'est pas présent, on sait que tous les ingrédients ne sont pas présents
-=======
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       selectedIngredients.forEach((ingredientSelectionne) => {
         if (!ingredientsInRecipe.includes(ingredientSelectionne)) {
           allIngredientsPresent = false;
@@ -2158,32 +2150,15 @@ function selectedRecipes() {
     });
   }
 
-<<<<<<< HEAD
-  // filter remaining reipces by appliance
-  if (selectedAppliances.length > 0) {
-    // si des ingrédients sont sélectionnés
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      // on regarde si l'appliance de la recette fait partie des appliances sélectionnées
-=======
   if (selectedAppliances.length > 0) {
     filteredRecipes = filteredRecipes.filter((recipe) => {
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       return selectedAppliances.includes(recipe.appliance);
     });
   }
 
-<<<<<<< HEAD
-  // filter remaining reipces by ustensiles
-  if (selectedUstensils.length > 0) {
-    // si des ustensils sont sélectionnés
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      let allUstensilsPresent = true;
-      // si un ingrédient n'est pas présent, on sait que tous les ingrédients ne sont pas présents
-=======
   if (selectedUstensils.length > 0) {
     filteredRecipes = filteredRecipes.filter((recipe) => {
       let allUstensilsPresent = true;
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       selectedUstensils.forEach((selectedUstensile) => {
         if (!recipe.ustensils.includes(selectedUstensile)) {
           allUstensilsPresent = false;
@@ -2192,11 +2167,7 @@ function selectedRecipes() {
       return allUstensilsPresent;
     });
   }
-<<<<<<< HEAD
   globalFilteredRecipes = filteredRecipes;
-=======
-
->>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
   return filteredRecipes;
 }
 
