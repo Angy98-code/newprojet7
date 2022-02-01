@@ -410,15 +410,14 @@ div.card-img-top {
   height: 94px;
   display: inline;
   text-overflow: ellipsis;
-  white-space: wrap;
   padding-top: 10px;
   font-size: 12px;
   font-weight: 500;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6; /* number of lines to show */
-  line-height: 1.2; /* fallback */
-  max-height: X * 6;
+  -webkit-line-clamp: 6;
+  line-height: 1.2;
+  max-height: 564px;
   overflow: hidden;
 }
 
