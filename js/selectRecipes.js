@@ -2,7 +2,7 @@ let selectedIngredients = []; // array of selected ingredients
 let selectedAppliances = []; // array of selected appliances (array of strings)
 let selectedUstensils = []; // array of selected ustensils (array of strings)
 let globalSearchString = ""; // search string entered in main search field
-let globalFilteredRecipes = recipes;
+
 // getIngredients returns the list of ingredients, sorted and deduped present in the recipes array given in parameter
 function getIngredients(recipes) {
   let arrayIngredients = [];
@@ -65,19 +65,6 @@ function getRemainingUstensils() {
   return remainingUstensils.filter((ustensil) => {
     return !selectedUstensils.includes(ustensil);
   });
-}
-
-// allUstensils returns the list of ustensils, sorted and deduped
-function allUstensils(recipes) {
-  let arrayUstensils = [];
-  recipes.forEach((recipe) => {
-    recipe.ustensils.forEach((ustensil) => {
-      arrayUstensils.push(ustensil);
-    });
-  });
-  let sorted = arrayUstensils.sort();
-  let deduped = [...new Set(sorted)];
-  return Array.from(deduped);
 }
 
 // selectedRecipes returns the recipes selected by main search string, ingredients, appliances and ustencils
@@ -155,5 +142,6 @@ function selectedRecipes() {
       return allUstensilsPresent;
     });
   }
+
   return filteredRecipes;
 }
