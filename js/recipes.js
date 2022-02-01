@@ -2098,6 +2098,7 @@ function getRemainingUstensils() {
   });
 }
 
+<<<<<<< HEAD
 function selectedRecipes(recipe) {
   let filteredRecipes = recipes;
   if (globalSearchString.length >= 3) {
@@ -2109,18 +2110,33 @@ function selectedRecipes(recipe) {
       ) {
         filteredRecipes.push(recipe);
         continue;
+=======
+function selectedRecipes() {
+  let filteredRecipes = recipes;
+  if (globalSearchString.length >= 3) {
+    filteredRecipes = recipes.filter((recipe) => {
+      if (
+        recipe.name.toLowerCase().includes(globalSearchString.toLowerCase())
+      ) {
+        return true;
+>>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       }
       if (
         recipe.description
           .toLowerCase()
           .includes(globalSearchString.toLowerCase())
       ) {
+<<<<<<< HEAD
         filteredRecipes.push(recipe);
         continue;
+=======
+        return true;
+>>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
       }
       const ingredients = recipe.ingredients.map((ingredient) =>
         ingredient.ingredient.toLowerCase()
       );
+<<<<<<< HEAD
       const ingredientsFound = ingredients.includes(
         globalSearchString.toLowerCase()
       );
@@ -2133,6 +2149,15 @@ function selectedRecipes(recipe) {
    if (selectedIngredients.length > 0) {
     filteredRecipes = filteredRecipes.filter((recipe) => {
        const ingredientsInRecipe = recipe.ingredients.map(
+=======
+      return ingredients.includes(globalSearchString.toLowerCase());
+    });
+  }
+
+  if (selectedIngredients.length > 0) {
+    filteredRecipes = filteredRecipes.filter((recipe) => {
+      const ingredientsInRecipe = recipe.ingredients.map(
+>>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
         (ingredient) => ingredient.ingredient
       );
       let allIngredientsPresent = true;
@@ -2147,7 +2172,11 @@ function selectedRecipes(recipe) {
 
   if (selectedAppliances.length > 0) {
     filteredRecipes = filteredRecipes.filter((recipe) => {
+<<<<<<< HEAD
        return selectedAppliances.includes(recipe.appliance);
+=======
+      return selectedAppliances.includes(recipe.appliance);
+>>>>>>> 70b163e6a77e91f42ad03ed6179c3277e7ed829e
     });
   }
 
