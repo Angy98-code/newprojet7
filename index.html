@@ -1,91 +1,65 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE>
+<html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Les petits plats - Projet 7</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
-        type='text/css'>
-
-
-    <!-- Bootstrap CSS -->
+        type='text/css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Les petits plats - Projet 7</title>
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 </head>
 
 <body>
-
     <div class="container-lift">
-
         <header>
             <div class="divlogo">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/logo.png" id="logo" alt="Site logo"></a>
+                    <img src="images/logo.png" id="logo" alt="Site logo" /></a>
             </div>
 
             <aside>
-                <!--search nav-->
                 <nav class="navbarsearch">
                     <form class="row-1" id="containerinput">
                         <input class="col-12" id="inputsearch" type="search"
                             placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
-                            aria-label="Search">
+                            aria-label="Search" />
                         <div class="divicon"><i class="fa fa-search text-right" aria-hidden="true"></i></div>
                     </form>
-                    <div id=not-found>
-
-                    </div>
+                    <div id="not-found"></div>
                 </nav>
             </aside>
         </header>
 
         <section>
-            <!---search section with the 3 buttons-->
             <div class="containersection">
-
-                <!--les div apparaissant après avoir fait son choix (en haut), -->
                 <div class="navbarresultchooses">
                     <div class="placeringredientschoisis">
                     </div>
                     <div class="placerappareilchoisis">
-                        <!--<div class="tagsappareilrow">
-                            <span class="navbarresultchoosesappareil">${ingredient}
-                                <i class="far fa-times-circle" id="boutonfermeturetag"></i>
-                            </span>
-                        </div>-->
                     </div>
                     <div class="placerustensileschoisis">
-                        <!--<div class="tagsustensilesrow">
-                            <span class="navbarresultchoosesustensiles">${ingredient}
-                                <i class="far fa-times-circle" id="boutonfermeturetag"></i>
-                            </span>
-                        </div>-->
                     </div>
                 </div>
 
-                <!--bloc des 3 boutons ingrédients, appareil et ustensiles-->
                 <nav class="navbar navbar-expand">
-                    <!--div parent-->
+
                     <div class="containerchooses">
 
-                        <!--ingredients close-->
                         <div class="ingredientsclose">
 
                             <div class="chooseingredients">
                                 <button type="button" onclick="OpenPanelIngredients()" class="btn btn-primary "
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingredients
-                                    <div class="openclosechevron">
+                                    <span class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                                    </div>
+                                    </span>
                                 </button>
                             </div>
                         </div>
 
-                        <!--ingredients open-->
                         <div class="ingredientsopen">
 
                             <div class="navopeningredients">
@@ -95,23 +69,20 @@
                             </div>
 
                             <ul class="ingredientslist">
-                                <!--dedans il y aura des span-->
                             </ul>
                         </div>
 
-                        <!--appareil close-->
                         <div class="appareilclose">
 
                             <div class="chooseappareil">
                                 <button type="button" onclick="OpenPanelAppliances()" class="btn btn-success">Appareil
-                                    <div class="openclosechevron">
+                                    <span class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                                    </div>
+                                    </span>
                                 </button>
                             </div>
                         </div>
 
-                        <!--appareil open-->
                         <div class="appareilopen">
 
                             <div class="navopenappareil">
@@ -121,24 +92,20 @@
                             </div>
 
                             <ul class="appareillist">
-                                <li class="appareil-item">Lait de coco</li>
-                                <li class="appareil-item">Jus de citron</li>
                             </ul>
                         </div>
 
-                        <!--ustensiles close-->
                         <div class="ustensilesclose">
 
                             <div class="chooseustensiles">
                                 <button type="button" onclick="OpenPanelUstensiles()" class="btn btn-danger">Ustensiles
-                                    <div class="openclosechevron">
+                                    <span class="openclosechevron">
                                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                                    </div>
+                                    </span>
                                 </button>
                             </div>
                         </div>
 
-                        <!--ustensiles open-->
                         <div class="ustensilesopen">
 
                             <div class="navopenustensiles">
@@ -148,33 +115,24 @@
                             </div>
 
                             <ul class="ustensileslist">
-                                <li class="ustensiles-item">Lait de coco</li>
-                                <li class="ustensiles-item">Jus de citron</li>
                             </ul>
                         </div>
 
                     </div>
-                    <!--fin containerchooses-->
                 </nav>
-                <!--fin navbar navbar-expand-->
             </div>
-            <!--containersection-->
 
         </section>
 
-        <menu>
-            <!--cours : les menus container-lift sur toute la large-->
-            <!--cours : taille -sm -md -lg -xl-->
+        <article>
             <div class="menucontainer">
                 <div class="allmenucards">
-                    <!--template string cards.js-->
                 </div>
             </div>
-        </menu>
+        </article>
 
     </div>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -184,15 +142,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/recipes.js"></script>
-    <script type="text/javascript" src="js/selectRecipes.js"></script>
-    <script type="text/javascript" src="js/tools.js"></script>
-    <script type="text/javascript" src="js/cards.js"></script>
-    <script type="text/javascript" src="js/searchIngredients.js"></script>
-    <script type="text/javascript" src="js/searchAppliances.js"></script>
-    <script type="text/javascript" src="js/searchUstensils.js"></script>
-    <script type="text/javascript" src="js/searchGlobal.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/recipes.js"></script>
     <script src="https://kit.fontawesome.com/941542f664.js" crossorigin="anonymous"></script>
 
 </body>
