@@ -42,7 +42,6 @@ function selectIngredient(ingredientName) {
 // OnIngredientInput
 function OnIngredientInput(e) {
   const ingredientSearchStr = e.target.value;
-  //console.log("OnIngredientInput", ingredientSearchStr);
   const ingredients = getRemainingIngredients().filter((ingredient) => {
     return ingredient.toLowerCase().includes(ingredientSearchStr.toLowerCase());
   });

@@ -16,12 +16,13 @@ function getIngredients(recipes) {
   return Array.from(uniqueIngredientsArray);
 }
 
-// getRemainingIngredients
+// getRemainingIngredients récupère les ingrédients restants
 function getRemainingIngredients() {
   // get ingredients remaining in selected recipes
   const remainingIngredients = getIngredients(selectedRecipes());
   // filter out already selected ingredients
   return remainingIngredients.filter((ingredient) => {
+    //sortir ceux qui sont déjà sélectionnés
     return !selectedIngredients.includes(ingredient);
   });
 }

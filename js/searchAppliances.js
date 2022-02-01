@@ -48,7 +48,6 @@ function selectAppliance(applianceName) {
 // OnApplianceInput
 function OnApplianceInput(e) {
   const applianceSearchStr = e.target.value;
-  //console.log("OnApplianceInput", applianceSearchStr);
   const appliances = getRemainingAppliances().filter((appliance) => {
     return appliance.toLowerCase().includes(applianceSearchStr.toLowerCase());
   });

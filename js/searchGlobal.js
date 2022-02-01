@@ -1,8 +1,7 @@
 function handleGlobalSearch() {
   const searchPrincipal = document.getElementById("inputsearch");
   searchPrincipal.addEventListener("input", (e) => {
-    globalSearchString = e.target.value; // globalSearchString is global, defined in selectRecipes
-   // console.log("globalSearchString", globalSearchString);
+    globalSearchString = e.target.value;
     CloseAllPanels();
     placeCards(selectedRecipes());
     // not found message
@@ -12,12 +11,10 @@ function handleGlobalSearch() {
       if (recepiesFound === 0) {
         notFound.innerHTML =
           "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
-      } 
-      //else {
-      //  notFound.innerHTML = `J'ai trouvé ${recepiesFound} recettes`;
-     // }
-    } 
-    else {
+      } else {
+        notFound.innerHTML = `J'ai trouvé ${recepiesFound} recettes`;
+      }
+    } else {
       notFound.innerHTML = "";
     }
   });

@@ -1,5 +1,3 @@
-
-
 function oneCardHtml(recipe) {
   return `<div class="card-body">
             <div class="card-img-top"></div>
@@ -36,12 +34,6 @@ function placeCards(recipesToDraw) {
     parentNode.innerHTML += oneCardHtml(recipe);
   });
 }
-
-// todo
-// *1- ajouter un paramètre recipesToDraw à placeCards() et renommer placeCards en drawRecipes
-// *2- modifier l'appel de placeCards en conséquence
-// 3- appeler placeCards avec un array de recettes filtrées en fonction des ingrédients sélectionnés à chque ajout/suppression d'ingrédients
-//
 
 //leftSideCard liste des ingrédients avec quantity et unit
 function leftSideCard(ingredients) {
