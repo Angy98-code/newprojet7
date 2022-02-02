@@ -1844,6 +1844,7 @@ placeCards(recipes);
 
 handleGlobalSearch();
 
+//fonction OpenPanelAppliances appelée sur click dans le Html ligne 78
 function OpenPanelAppliances() {
   CloseAllPanels();
   OpenPanel("appareil");
@@ -1854,7 +1855,6 @@ function OpenPanelAppliances() {
     "selectAppliance"
   );
 }
-//fonction appelée sur click dans le Html ligne 78
 
 function removeApplianceTagCB(e) {
   const appliance = e.target.parentNode.textContent.trim();
@@ -1869,6 +1869,7 @@ function removeApplianceTagCB(e) {
   placeCards(selectedRecipes());
 }
 
+//fonction appelée dans paramètre en ligne 1879
 function selectAppliance(applianceName) {
   selectedAppliances.push(applianceName);
   drawList(
@@ -1887,8 +1888,8 @@ function selectAppliance(applianceName) {
   ClosePanel("appareil");
   placeCards(selectedRecipes());
 }
-//fonction appelée dans paramètre en ligne 1878
 
+//fonction OnApplianceInput appelée lors du input dans Html ligne 89
 function OnApplianceInput(e) {
   const applianceSearchStr = e.target.value;
   const appliances = getRemainingAppliances().filter((appliance) => {
@@ -1896,7 +1897,6 @@ function OnApplianceInput(e) {
   });
   drawList(appliances, ".appareillist", "appareil-item", "selectAppliance");
 }
-//fonction appelée lors du input dans Html ligne 89
 
 function handleGlobalSearch() {
   const searchPrincipal = document.getElementById("inputsearch");
@@ -1919,12 +1919,12 @@ function handleGlobalSearch() {
   });
 }
 
+// fonction OpenPanelIngredients appelée sur click dans HTML ligne 54
 function OpenPanelIngredients() {
   CloseAllPanels();
   OpenPanel("ingredients");
   DrawIngredientsList();
 }
-// fonction appelée sur click dans HTML ligne 54
 
 function DrawIngredientsList() {
   drawList(
@@ -1943,6 +1943,7 @@ function removeIngredientTagCB(e) {
   placeCards(selectedRecipes());
 }
 
+// fonction selectIngredient appelée dans paramètre ligne 1951
 function selectIngredient(ingredientName) {
   selectedIngredients.push(ingredientName);
   DrawIngredientsList();
@@ -1956,8 +1957,8 @@ function selectIngredient(ingredientName) {
   ClosePanel("ingredients");
   placeCards(selectedRecipes());
 }
-// fonction appelée dans paramètre ligne 1950
 
+// fonction OnIngredientInput appelée sur input dans HTML ligne 66
 function OnIngredientInput(e) {
   const ingredientSearchStr = e.target.value;
   const ingredients = getRemainingIngredients().filter((ingredient) => {
@@ -1970,8 +1971,8 @@ function OnIngredientInput(e) {
     "selectIngredient"
   );
 }
-// fonction appelée sur input dans HTML ligne 66
 
+// fonction OpenPanelUstensiles appelée sur click dans HTML ligne 101
 function OpenPanelUstensiles() {
   CloseAllPanels();
   OpenPanel("ustensiles");
@@ -1982,7 +1983,6 @@ function OpenPanelUstensiles() {
     "selectUstensile"
   );
 }
-// fonction appelée sur click dans HTML ligne 101
 
 function CloseAllPanels() {
   ClosePanel("ingredients");
@@ -2010,6 +2010,7 @@ function removeUstensilTagCB(e) {
   placeCards(selectedRecipes());
 }
 
+//fonction selectUstensile appelée dans le paramètre ligne 2019
 function selectUstensile(ustensileName) {
   selectedUstensils.push(ustensileName);
   drawList(
@@ -2028,8 +2029,8 @@ function selectUstensile(ustensileName) {
   ClosePanel("ustensiles");
   placeCards(selectedRecipes());
 }
-//fonction appelée dans le paramètre ligne 2019
 
+// fonction OnUstensileInput appelée sur input dans HTML ligne 112
 function OnUstensileInput(e) {
   const ustensileSearchStr = e.target.value;
   const ustensiles = getRemainingUstensils().filter((ustensile) => {
@@ -2037,7 +2038,6 @@ function OnUstensileInput(e) {
   });
   drawList(ustensiles, ".ustensileslist", "ustensiles-item", "selectUstensile");
 }
-// fonction appelée sur input dans HTML ligne 112
 
 let selectedIngredients = [];
 let selectedAppliances = [];
@@ -2099,7 +2099,6 @@ function getRemainingUstensils() {
   });
 }
 
-
 function selectedRecipes() {
   let filteredRecipes = globalFilteredRecipes;
   if (globalSearchString.length >= 3) {
@@ -2155,7 +2154,7 @@ function selectedRecipes() {
       return allUstensilsPresent;
     });
   }
- // globalFilteredRecipes = filteredRecipes;
+  // globalFilteredRecipes = filteredRecipes;
   return filteredRecipes;
 }
 

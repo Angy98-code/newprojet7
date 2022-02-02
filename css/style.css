@@ -96,15 +96,9 @@ nav.navbar.navbar-expand {
   background-color: #ed6454;
 }
 
-/* choix des ingrédients, ustensiles ...  doit apparaitre au moment des choix sinon 
-display none */
-/*div principale*/
-
 .navbarresultchooses {
   display: flex;
   margin-bottom: 20px;
-  /*mettre en display none, changement dynamiquement avec js*/
-  /* display : none; */
 }
 
 .far.fa-times-circle {
@@ -250,8 +244,6 @@ display none */
   flex-direction: column;
   display: flex;
   flex-wrap: wrap;
-  /* height: 400px;
-  width: 650px;*/
   cursor: pointer;
 }
 
@@ -332,22 +324,6 @@ i span {
 .tagsustensilesrow {
   margin: 0;
 }
-/*
-.tagsingredientrow {
-  display: flex;
-  row-gap: 5px;
-  flex-direction: row;
-}*/
-
-/*
-p.card-text {
-  font-size: 12px;
-  text-overflow: "[...]";
-  height: 90px;
-  /*width: 171px;
-  height: 109px;
-  top: 240px;
-  left: 191px;*/
 
 /* MENU */
 
