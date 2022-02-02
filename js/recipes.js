@@ -2099,18 +2099,6 @@ function getRemainingUstensils() {
   });
 }
 
-// allUstensils returns the list of ustensils, sorted and deduped
-function allUstensils(recipes) {
-  let arrayUstensils = [];
-  recipes.forEach((recipe) => {
-    recipe.ustensils.forEach((ustensil) => {
-      arrayUstensils.push(ustensil);
-    });
-  });
-  let sorted = arrayUstensils.sort();
-  let deduped = [...new Set(sorted)];
-  return Array.from(deduped);
-}
 
 function selectedRecipes() {
   let filteredRecipes = globalFilteredRecipes;
@@ -2167,7 +2155,7 @@ function selectedRecipes() {
       return allUstensilsPresent;
     });
   }
-  globalFilteredRecipes = filteredRecipes;
+ // globalFilteredRecipes = filteredRecipes;
   return filteredRecipes;
 }
 
